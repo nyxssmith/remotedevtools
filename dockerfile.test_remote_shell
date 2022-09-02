@@ -1,0 +1,10 @@
+FROM ubuntu:20.04
+
+RUN apt-get update && \
+      apt-get -y install sudo ssh
+
+RUN useradd -m user && echo "user:user" | chpasswd && adduser user sudo
+
+USER user
+WORKDIR /home/user
+CMD /bin/bash
